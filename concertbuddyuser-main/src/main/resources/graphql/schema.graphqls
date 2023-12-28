@@ -1,0 +1,29 @@
+type User {
+    id: ID!
+    name: String!
+    dateOfBirth: String
+    age: Int
+    email: String!
+    password: String!
+    profilePictureUrl: String
+    songs: [Song]
+}
+
+type Song {
+    id: ID!
+    name: String!
+    artist: String!
+    genre: [String]
+}
+
+type Query {
+    user(id: ID!): User
+    users: [User]
+    song(id: ID!): Song
+    songs: [Song]
+}
+
+type Mutation {
+    createUser(name: String!, dateOfBirth: String!, email: String!, password: String!, profilePictureUrl: String): User
+    createSong(name: String!, artist: String!, genre: [String]): Song
+}

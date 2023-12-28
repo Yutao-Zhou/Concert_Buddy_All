@@ -1,0 +1,17 @@
+steps:
+  - name: 'maven:3.8.4-openjdk-17'
+    entrypoint: 'mvn'
+    args: ['clean', 'install']
+    dir: '/workspace'
+
+  - name: 'maven:3.8.4-openjdk-17'
+    entrypoint: 'mvn'
+    args: ['test']
+    dir: '/workspace'
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy', 'app.yaml']
+    dir: '/workspace'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
